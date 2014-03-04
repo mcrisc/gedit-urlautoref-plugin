@@ -1,0 +1,10 @@
+[Plugin]
+Loader=python3
+Module=urlautoref
+IAge=3
+Name=URL Auto-Reference
+Description=Transforms pasted URLs into numbered references automatically
+Authors=Marcelo Criscuolo <criscuolo.marcelo@gmail.com>
+Copyright=Copyright © 2014 Marcelo Criscuolo <criscuolo.marcelo@gmail.com>
+Website=http://mcrisc.github.io/
+
