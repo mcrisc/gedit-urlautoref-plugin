@@ -27,5 +27,5 @@ In Gedit, type a `[` and paste the URL with
     [1] http://github.com/
     [2] http://stackoverflow.com/
 
-Inserting some blanks after your current line may be a good idea. Otherwise you'll get your reference list appended to the end of your current line.
+When starting a new file, inserting some blanks after your first line may be a good idea. Otherwise you'll get the reference list appended to it.
 
