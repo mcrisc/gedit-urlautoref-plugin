@@ -64,13 +64,13 @@ class URLAutoRefPlugin(GObject.Object, Gedit.WindowActivatable):
     def extract_references(doc):
         end = doc.get_end_iter()
         # locating first reference entry, if any
-        found = end.backward_search('[1]', 
+        found = end.backward_search('[1]:', 
                 Gtk.TextSearchFlags.TEXT_ONLY, None)
         if not found:
             return []
         start = found[0]
         text = doc.get_text(start, end, False)
-        entries = re.findall(r'\[(\d+)\]\s+(\S+)', text)
+        entries = re.findall(r'\[(\d+)\]:\s+(\S+)', text)
         entries = [(url, int(ref)) for ref, url in entries]
         return entries
 
@@ -82,7 +82,7 @@ class URLAutoRefPlugin(GObject.Object, Gedit.WindowActivatable):
     def _on_tab_added(self, window, tab, data=None):
         doc = tab.get_document()
         mime = doc.get_mime_type()
-        if mime == 'text/plain':
+        if mime in ('text/plain', 'text/x-markdown'):
             doc.refbase = ReferenceBase()
             doc.connect('paste_done', self._on_paste_done)
             doc.connect('loaded', self._on_loaded)
@@ -109,6 +109,6 @@ class URLAutoRefPlugin(GObject.Object, Gedit.WindowActivatable):
             citation = '[%d]' % ref
             doc.insert_at_cursor(citation, len(citation))
             if not in_refbase:
-                ref_entry = '[%d] %s\n' % (ref, url)
+                ref_entry = '[%d]: %s\n' % (ref, url)
                 doc.insert(doc.get_end_iter(), ref_entry, len(ref_entry))
 
