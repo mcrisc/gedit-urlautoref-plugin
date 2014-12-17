@@ -16,7 +16,7 @@ Copy plugin files to your local Gedit plugin directory:
 Open Gedit, go to `Edit -> Preferences -> Plugins` and activate
 `URL Auto-Reference`.
 
-This code was tested in Gedit 3.8.3.
+This code was tested in Gedit 3.10.4.
 
 
 ## How to Use
