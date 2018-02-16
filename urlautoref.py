@@ -87,7 +87,7 @@ class URLAutoRefPlugin(GObject.Object, Gedit.WindowActivatable):
             doc.connect('paste_done', self._on_paste_done)
             doc.connect('loaded', self._on_loaded)
 
-    def _on_loaded(self, doc, data):
+    def _on_loaded(self, doc):
         entries = URLAutoRefPlugin.extract_references(doc)
         doc.refbase.update(entries)
 
